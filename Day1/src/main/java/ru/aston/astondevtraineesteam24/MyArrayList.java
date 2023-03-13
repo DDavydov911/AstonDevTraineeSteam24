@@ -1,6 +1,7 @@
 package ru.aston.astondevtraineesteam24;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * Собственная реализация ArrayList согласно заданию.
@@ -9,7 +10,8 @@ import java.util.Collection;
  * @author Denis Davydov 09.03.2023
  */
 public class MyArrayList {
-    private Object[] innerList = new Object[10];
+    private static final int DEFAULT_CAPACITY = 10;
+    private Object[] innerList = new Object[DEFAULT_CAPACITY];
     private int size;
 
     public MyArrayList() {
@@ -114,7 +116,11 @@ public class MyArrayList {
     }
 
     public void sort(Collection collection) {
-
+        Iterator iterator = collection.iterator();
+        Object[] objects = new Object[collection.size()];
+        for (int i = 0; iterator.hasNext(); i++) {
+            objects[i] = iterator.next();
+        }
     }
 
     public int size() {
@@ -141,22 +147,4 @@ public class MyArrayList {
         }
         this.innerList = o;
     }
-
-    public static void main(String[] args) {
-        MyArrayList list = new MyArrayList(0);
-        for (int i = 1; i < 20; i++) {
-            list.add(i);
-        }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-        for (int i = 0; i < list.size(); i = i + 2) {
-            list.delete(i);
-        }
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-
-    }
-
 }
