@@ -16,6 +16,18 @@ public class MyArrayListTest {
     }
 
     @Test
+    public void whenAddByIndexThenSizeIs1() {
+        MyArrayList list = new MyArrayList();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add(0, "101");
+        assertEquals("101", list.get(0));
+        assertEquals("1", list.get(1));
+        assertEquals("3", list.get(3));
+    }
+
+    @Test
     public void whenAddThenSameGet() {
         MyArrayList list = new MyArrayList();
         String test = "test";
@@ -29,7 +41,7 @@ public class MyArrayListTest {
         String test = "test";
         String test2 = "test1";
         list.add(test);
-        list.put(0, test2);
+        list.set(0, test2);
         assertEquals(test2, list.get(0));
     }
 

@@ -54,6 +54,17 @@ public class MyArrayList {
         innerList[size++] = o;
     }
 
+    public void add(int index, Object o) {
+        if (size == innerList.length) {
+            this.expand();
+        }
+        for (int i = innerList.length - 2; index <= i; i--) {
+            innerList[i + 1] = innerList[i];
+        }
+        innerList[index] = o;
+        size++;
+    }
+
     /**
      * Вставляет элемент в массив по указанному индексу.
      *
@@ -62,7 +73,7 @@ public class MyArrayList {
      * @return возвращает элемент, ране находившийся
      * по данному индексу или null.
      */
-    public Object put(int index, Object o) {
+    public Object set(int index, Object o) {
         if (index > size - 1) {
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -122,6 +133,29 @@ public class MyArrayList {
             objects[i] = iterator.next();
         }
     }
+
+    //    public int[] quickSort(int[] o) {
+//        if (o.length == 1) {
+//            return o;
+//        } else if (o.length == 2) {
+//            int[] res = new int[2];
+//
+//        } else {
+//            int pivot = o[o.length - 1];
+//            int wall = 0;
+//            int current = 0;
+//            for (int i = 0; i < o.length; i++) {
+//                if (o[i] < pivot) {
+//
+//                    wall++;
+//                } else {
+//
+//                }
+//
+//            }
+//        }
+//
+//    }
 
     public int size() {
         return size;
